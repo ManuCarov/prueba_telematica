@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/broker.dir/src/main.cpp.o -o broker  libmessaging.a -lpthread

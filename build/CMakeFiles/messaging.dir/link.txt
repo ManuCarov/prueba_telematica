@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmessaging.a CMakeFiles/messaging.dir/src/queue.cpp.o CMakeFiles/messaging.dir/src/topic.cpp.o CMakeFiles/messaging.dir/src/broker.cpp.o
+/usr/bin/ranlib libmessaging.a

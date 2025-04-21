@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/consumer.dir/clients/consumer.cpp.o -o consumer  libmessaging.a -lpthread

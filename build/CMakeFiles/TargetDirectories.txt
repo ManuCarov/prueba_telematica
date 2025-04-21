@@ -1,0 +1,6 @@
+/home/kali/Documents/Proyecto1-TT/build/CMakeFiles/messaging.dir
+/home/kali/Documents/Proyecto1-TT/build/CMakeFiles/broker.dir
+/home/kali/Documents/Proyecto1-TT/build/CMakeFiles/producer.dir
+/home/kali/Documents/Proyecto1-TT/build/CMakeFiles/consumer.dir
+/home/kali/Documents/Proyecto1-TT/build/CMakeFiles/edit_cache.dir
+/home/kali/Documents/Proyecto1-TT/build/CMakeFiles/rebuild_cache.dir
