@@ -6,18 +6,20 @@
 #include <mutex>
 #include "common.h"
 
-class Queue {
+class Queue
+{
 private:
     std::string name;
     std::string topicName;
     std::queue<std::string> messageQueue;
-    std::mutex queueMutex;
+    mutable std::mutex queueMutex; // Añadir 'mutable' aquí
     bool active;
+
 public:
-    Queue(const std::string& queueName, const std::string& parentTopic);
+    Queue(const std::string &queueName, const std::string &parentTopic);
     ~Queue();
     // Operaciones básicas
-    void enqueueMessage(const std::string& message);
+    void enqueueMessage(const std::string &message);
     std::string consumeMessage();
     bool isEmpty() const;
     // Getters/Setters

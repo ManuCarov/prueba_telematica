@@ -8,6 +8,7 @@ include_directories(include)
 
 # Biblioteca principal
 add_library(messaging STATIC
+    src/common.cpp
     src/queue.cpp
     src/topic.cpp
     src/broker.cpp

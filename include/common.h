@@ -35,15 +35,7 @@ const std::string CMD_LIST_QUEUES = "LIST_QUEUES:";
 const std::string CMD_PRODUCE = "PRODUCE:";
 const std::string CMD_CONSUME = "CONSUME:";
 
-// Funciones de utilidad
-std::vector<std::string> splitString(const std::string& str, char delimiter) {
-    std::vector<std::string> tokens;
-    std::string token;
-    std::istringstream tokenStream(str);
-    while (std::getline(tokenStream, token, delimiter)) {
-        tokens.push_back(token);
-    }
-    return tokens;
-}
+// Declaración de función - movida a un archivo común.cpp
+std::vector<std::string> splitString(const std::string& str, char delimiter);
 
 #endif

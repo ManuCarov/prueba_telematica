@@ -9,8 +9,8 @@ Queue::Queue(const std::string& queueName, const std::string& parentTopic)
 
 Queue::~Queue() {
     std::lock_guard<std::mutex> lock(queueMutex);
-    while (!messages.empty()) {
-        messages.pop();
+    while (!messageQueue.empty()) {
+        messageQueue.pop();
     }
     std::cout << "Cola '" << name << "' eliminada" << std::endl;
 }
@@ -18,26 +18,26 @@ Queue::~Queue() {
 void Queue::enqueueMessage(const std::string& message) {
     std::lock_guard<std::mutex> lock(queueMutex);
     if (active) {
-        messages.push(message);
+        messageQueue.push(message);
         std::cout << "Mensaje encolado en '" << name << "': " << message << std::endl;
     }
 }
 
 std::string Queue::consumeMessage() {
     std::lock_guard<std::mutex> lock(queueMutex);
-    if (!active || messages.empty()) {
+    if (!active || messageQueue.empty()) {
         return RESPONSE_NO_MESSAGE;
     }
     
-    std::string message = messages.front();
-    messages.pop();
+    std::string message = messageQueue.front();
+    messageQueue.pop();
     std::cout << "Mensaje consumido de '" << name << "': " << message << std::endl;
     return message;
 }
 
 bool Queue::isEmpty() const {
     std::lock_guard<std::mutex> lock(queueMutex);
-    return messages.empty();
+    return messageQueue.empty();
 }
 
 std::string Queue::getName() const {

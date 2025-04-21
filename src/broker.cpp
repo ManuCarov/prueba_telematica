@@ -34,11 +34,15 @@ void Broker::start() {
 
     if (bind(serverSocket, (struct sockaddr *)&address, sizeof(address)) < 0) {
         std::cerr << "Error en bind" << std::endl;
+        close(serverSocket);
+        serverSocket = -1;
         return;
     }
 
     if (listen(serverSocket, MAX_CLIENTS) < 0) {
         std::cerr << "Error en listen" << std::endl;
+        close(serverSocket);
+        serverSocket = -1;
         return;
     }
 
@@ -67,6 +71,11 @@ void Broker::stop() {
 }
 
 bool Broker::createTopic(const std::string& topicName) {
+    if (topicName.empty()) {
+        std::cerr << "No se puede crear un tópico con nombre vacío" << std::endl;
+        return false;
+    }
+
     std::lock_guard<std::mutex> lock(brokerMutex);
     if (topics.find(topicName) != topics.end()) {
         std::cout << "Tópico '" << topicName << "' ya existe" << std::endl;
@@ -100,6 +109,11 @@ std::vector<std::string> Broker::listTopics() const {
 }
 
 bool Broker::createQueue(const std::string& topicName, const std::string& queueName) {
+    if (topicName.empty() || queueName.empty()) {
+        std::cerr << "No se puede crear una cola con nombre vacío o en un tópico con nombre vacío" << std::endl;
+        return false;
+    }
+
     std::lock_guard<std::mutex> lock(brokerMutex);
     auto it = topics.find(topicName);
     if (it == topics.end()) {
@@ -152,9 +166,10 @@ std::string Broker::consumeMessage(const std::string& topicName, const std::stri
 
 void Broker::handleClient(int clientSocket) {
     char buffer[MAX_BUFFER_SIZE] = {0};
-    ssize_t bytesRead = read(clientSocket, buffer, MAX_BUFFER_SIZE);
+    ssize_t bytesRead = read(clientSocket, buffer, MAX_BUFFER_SIZE - 1); // Asegurar espacio para null terminator
     
     if (bytesRead > 0) {
+        buffer[bytesRead] = '\0'; // Asegurar terminación del string
         std::string request(buffer);
         std::string response = parseAndExecuteCommand(request);
         send(clientSocket, response.c_str(), response.size(), 0);
