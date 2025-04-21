@@ -1,7 +1,7 @@
 CMakeFiles/messaging.dir/src/queue.cpp.o: \
  /home/kali/Documents/Proyecto1-TT/src/queue.cpp \
  /usr/include/stdc-predef.h \
- /home/kali/Documents/Proyecto1-TT/include/queue.h \
+ /home/kali/Documents/Proyecto1-TT/src/../include/queue.h \
  /usr/include/c++/14/string /usr/include/c++/14/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
@@ -151,7 +151,7 @@ CMakeFiles/messaging.dir/src/queue.cpp.o: \
  /usr/include/c++/14/ext/atomicity.h \
  /usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h \
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
- /home/kali/Documents/Proyecto1-TT/include/common.h \
+ /home/kali/Documents/Proyecto1-TT/src/../include/common.h \
  /usr/include/c++/14/map /usr/include/c++/14/bits/stl_tree.h \
  /usr/include/c++/14/ext/aligned_buffer.h \
  /usr/include/c++/14/bits/node_handle.h \
@@ -203,4 +203,5 @@ CMakeFiles/messaging.dir/src/queue.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
  /usr/include/x86_64-linux-gnu/bits/unistd_ext.h \
  /usr/include/linux/close_range.h /usr/include/string.h \
- /usr/include/strings.h /usr/include/arpa/inet.h
+ /usr/include/strings.h /usr/include/arpa/inet.h \
+ /home/kali/Documents/Proyecto1-TT/src/../include/common.h

@@ -1,4 +1,4 @@
-#include "topic.h"
+#include "../include/topic.h"
 
 Topic::Topic(const std::string& topicName)
     : name(topicName), active(true) {

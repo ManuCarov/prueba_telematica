@@ -1,6 +1,6 @@
-#include "queue.h"
+#include "../include/queue.h"
 #include <iostream>
-
+#include "../include/common.h"
 
 Queue::Queue(const std::string& queueName, const std::string& parentTopic)
     : name(queueName), topicName(parentTopic), active(true) {
